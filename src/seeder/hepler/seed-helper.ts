@@ -1,11 +1,11 @@
-import { PhoneNumber } from "../../user/phoneNumber.class"
+import { PhoneNumber } from "../../user/db/phoneNumber.interface"
 import { CreateUserDto } from "../../user/dto/create-user.dto"
 
 export class SeedHelper {
     static preparePhoneNumbers(seedPhonenumber): PhoneNumber {
         return {
-            phoneType: seedPhonenumber.phoneNumbers[0].type.toUpperCase(),
-            value: seedPhonenumber.phoneNumbers[0].value
+            phoneType: seedPhonenumber.type.toUpperCase(),
+            value: seedPhonenumber.value
         }
     }
     static prepareUser(user): CreateUserDto {

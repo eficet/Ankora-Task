@@ -1,4 +1,4 @@
-import { Injectable, BadRequestException, InternalServerErrorException, NotFoundException } from "@nestjs/common";
+import { Injectable, BadRequestException, InternalServerErrorException, NotFoundException, Logger } from "@nestjs/common";
 import { User } from "./db/user.interface";
 import { InjectModel } from "@nestjs/mongoose";
 import { Model } from 'mongoose';
@@ -9,6 +9,7 @@ import { UserConstants } from "./helper/user-constants";
 
 @Injectable()
 export class UserService {
+    private logger = new Logger("UserService");
 
     constructor(@InjectModel('User') private readonly userModel: Model<User>) { }
     async getAllUsers(): Promise<User[]> {
@@ -20,6 +21,7 @@ export class UserService {
         }
         console.log("Users", users.length)
         if (!users || users.length === 0) {
+            this.logger.error(UserConstants.USERS__NOT_FOUND);
             throw new NotFoundException(UserConstants.USERS__NOT_FOUND);
 
         }

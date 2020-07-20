@@ -1,4 +1,4 @@
-import { PhoneNumber } from "../phoneNumber.class";
+import { PhoneNumber } from "../db/phoneNumber.interface";
 import { IsNotEmpty } from 'class-validator'
 export class CreateUserDto {
     @IsNotEmpty()

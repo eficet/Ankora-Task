@@ -23,7 +23,7 @@ import { Request } from 'express';
 export class UserController {
     constructor(private readonly userService: UserService) { }
     @Get()
-    async getUsersAndFilter(@Req() req: Request, @Query() searUserDto: SearchUserDto,
+    async getUsersAndFilter(@Req() req: Request, @Query(ValidationPipe) searUserDto: SearchUserDto,
     ): Promise<MainResponse<User[]>> {
         const users = await this.userService.getUsersWithFilters(searUserDto);
         return new MainResponse(

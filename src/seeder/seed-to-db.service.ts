@@ -41,7 +41,7 @@ export class SeedToDatabaseService {
                 const userToCreate = usersToCreate.find(
                     user => user.email === data.email,
                 );
-                const mapedPhoneNumbers = SeedHelper.preparePhoneNumbers(data);
+                const mapedPhoneNumbers = SeedHelper.preparePhoneNumbers(data.phoneNumbers[0]);
                 userToCreate.phoneNumbers.push(mapedPhoneNumbers);
             });
             try {

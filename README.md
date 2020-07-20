@@ -2,8 +2,7 @@
 
 ## Description
 
-This RestFul API is built using NestJs with a MongoDb
-Its a User application that preforms CRUD operation & Seeds data to the database.
+This RestFul API is built using NestJs with a MongoDb, its a User application that preforms CRUD operation & Seeds data to the database.
 
 ## Instructions
 
@@ -15,13 +14,13 @@ $ npm install
 ```
 
 3. You have two options for the database, in the configuration file `.env` there are two connection strings provided:
-   - On the cloud : using MongoDb Atlas the app will connect to the existing database on the cloud().
-   - localy : you have to install mongoDb in your local machine and make sure that the mongoDb service is running so the the database will be created automatically.
+   - On the cloud : Using MongoDb Atlas the app will connect to the existing database on the cloud.
+   - Locally : You have to install mongoDb in your local machine and make sure that the mongoDb service is running so the the database will be created automatically.
      Note: By default the app is connected to the cloud DB, to change it to the local you have to change `MongooseModule.forRoot(process.env.DATABASE_CONNECTION_LOCAL)` in bothe the `app.module.ts` and `seeder.module.ts`.
 4. To test the Application you can use Postman, In the documentaion you will see a detailed explanation of the routes and what they do.
 5. There are to ways to launch the script that combines the seed data and save the new users to the database:
-   - send GET request to this rout `http://localhost:3000/seed`
-   - execute the following command in the application terminal which will run it as micro app (service) seperated from our Application:
+   - Send GET request to this rout `http://localhost:3000/seed`
+   - Execute the following command in the application terminal which will run it as micro app (service) seperated from our Application:
 
 ```bash
 $ npm run seed
