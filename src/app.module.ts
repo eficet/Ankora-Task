@@ -8,7 +8,7 @@ import { SeedingModule } from './seeder/seeder.module';
     ConfigModule.forRoot(),
     UserModule,
     SeedingModule,
-    MongooseModule.forRoot(process.env.DATABASE_CONNECTION),
+    MongooseModule.forRoot(process.env.DATABASE_CONNECTION_CLOUD),
   ],
 })
 export class AppModule { }

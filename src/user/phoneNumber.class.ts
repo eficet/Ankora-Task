@@ -5,5 +5,5 @@ export interface PhoneNumber {
 
 export enum PhoneNumberType {
     PRIMARY = 'PRIMARY',
-    SECUNDARY = 'SECUDARY'
+    SECONDARY = 'SECODARY'
 }

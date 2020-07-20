@@ -9,7 +9,7 @@ import { ConfigModule } from '@nestjs/config';
     imports: [
         ConfigModule.forRoot(),
         UserModule,
-        MongooseModule.forRoot(process.env.DATABASE_CONNECTION),
+        MongooseModule.forRoot(process.env.DATABASE_CONNECTION_CLOUD),
     ],
     controllers: [SeedController],
     providers: [SeedToDatabaseService],

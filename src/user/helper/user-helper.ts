@@ -5,25 +5,35 @@ export class UserHelper {
         const { query, email, phoneNumber } = searchUserDto;
         let queryCondition = {};
         if (query && email && phoneNumber) {
-            queryCondition = { $and: [{ $or: [{ name: query }, { surname: query }] }, { "phoneNumbers.value": phoneNumber }, { email: email }] };
+            queryCondition = { $and: [{ $or: [{ firstName: query }, { lastName: query }] }, { "phoneNumbers.value": phoneNumber }, { email: email }] };
         }
         else if (query && email && !phoneNumber) {
-            queryCondition = { $and: [{ $or: [{ name: query }, { surname: query }] }, { email: email }] };
+            console.log("from mail qe")
+
+            queryCondition = { $and: [{ $or: [{ firstName: query }, { lastName: query }] }, { email: email }] };
         }
         else if (query && phoneNumber && !email) {
-            queryCondition = { $and: [{ $or: [{ name: query }, { surname: query }] }, { "phoneNumbers.value": phoneNumber }] };
+            console.log("from phone que ph")
+
+            queryCondition = { $and: [{ $or: [{ firstName: query }, { lastName: query }] }, { "phoneNumbers.value": phoneNumber }] };
         }
         else if (query && !phoneNumber && !email) {
-            queryCondition = { $or: [{ name: query }, { surname: query }] };
+            console.log("qe")
+
+            queryCondition = { $or: [{ firstName: query }, { lastName: query }] };
         }
         else if (!query && phoneNumber && email) {
+            console.log("from ph em")
+
             queryCondition = { $and: [{ email: email }, { "phoneNumbers.value": phoneNumber }] };
         }
         else if (!query && email && !phoneNumber) {
+            console.log("from em")
             queryCondition = { email: email };
         }
         else if (!query && !email && phoneNumber) {
-            queryCondition = { "phoneNumbers.value": email };
+            console.log("from phone num", phoneNumber)
+            queryCondition = { "phoneNumbers.value": phoneNumber };
         }
         return queryCondition
     }

@@ -2,9 +2,9 @@ import { PhoneNumber } from "../phoneNumber.class";
 import { IsNotEmpty } from 'class-validator'
 export class CreateUserDto {
     @IsNotEmpty()
-    name: string;
+    firstName: string;
     @IsNotEmpty()
-    surname: string;
+    lastName: string;
     @IsNotEmpty()
     email: string;
     phoneNumbers: PhoneNumber[]

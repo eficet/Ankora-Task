@@ -1,37 +1,30 @@
-<p align="center">
-  <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo_text.svg" width="320" alt="Nest Logo" /></a>
-</p>
-
-[travis-image]: https://api.travis-ci.org/nestjs/nest.svg?branch=master
-[travis-url]: https://travis-ci.org/nestjs/nest
-[linux-image]: https://img.shields.io/travis/nestjs/nest/master.svg?label=linux
-[linux-url]: https://travis-ci.org/nestjs/nest
-  
-  <p align="center">A progressive <a href="http://nodejs.org" target="blank">Node.js</a> framework for building efficient and scalable server-side applications, heavily inspired by <a href="https://angular.io" target="blank">Angular</a>.</p>
-    <p align="center">
-<a href="https://www.npmjs.com/~nestjscore"><img src="https://img.shields.io/npm/v/@nestjs/core.svg" alt="NPM Version" /></a>
-<a href="https://www.npmjs.com/~nestjscore"><img src="https://img.shields.io/npm/l/@nestjs/core.svg" alt="Package License" /></a>
-<a href="https://www.npmjs.com/~nestjscore"><img src="https://img.shields.io/npm/dm/@nestjs/core.svg" alt="NPM Downloads" /></a>
-<a href="https://travis-ci.org/nestjs/nest"><img src="https://api.travis-ci.org/nestjs/nest.svg?branch=master" alt="Travis" /></a>
-<a href="https://travis-ci.org/nestjs/nest"><img src="https://img.shields.io/travis/nestjs/nest/master.svg?label=linux" alt="Linux" /></a>
-<a href="https://coveralls.io/github/nestjs/nest?branch=master"><img src="https://coveralls.io/repos/github/nestjs/nest/badge.svg?branch=master#5" alt="Coverage" /></a>
-<a href="https://gitter.im/nestjs/nestjs?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=body_badge"><img src="https://badges.gitter.im/nestjs/nestjs.svg" alt="Gitter" /></a>
-<a href="https://opencollective.com/nest#backer"><img src="https://opencollective.com/nest/backers/badge.svg" alt="Backers on Open Collective" /></a>
-<a href="https://opencollective.com/nest#sponsor"><img src="https://opencollective.com/nest/sponsors/badge.svg" alt="Sponsors on Open Collective" /></a>
-  <a href="https://paypal.me/kamilmysliwiec"><img src="https://img.shields.io/badge/Donate-PayPal-dc3d53.svg"/></a>
-  <a href="https://twitter.com/nestframework"><img src="https://img.shields.io/twitter/follow/nestframework.svg?style=social&label=Follow"></a>
-</p>
-  <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
-  [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
+# Ankora Backend Task Application
 
 ## Description
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+This RestFul API is built using NestJs with a MongoDb
+Its a User application that preforms CRUD operation & Seeds data to the database.
 
-## Installation
+## Instructions
+
+1. Clone the repository from  `https://github.com/eficet/Ankora-Task.git`.
+2. To install the application dependencies execute the folowing command :
 
 ```bash
 $ npm install
+```
+
+3. You have two options for the database, in the configuration file `.env` there are two connection strings provided:
+   - On the cloud : using MongoDb Atlas the app will connect to the existing database on the cloud().
+   - localy : you have to install mongoDb in your local machine and make sure that the mongoDb service is running so the the database will be created automatically.
+     Note: By default the app is connected to the cloud DB, to change it to the local you have to change `MongooseModule.forRoot(process.env.DATABASE_CONNECTION_LOCAL)` in bothe the `app.module.ts` and `seeder.module.ts`.
+4. To test the Application you can use Postman, In the documentaion you will see a detailed explanation of the routes and what they do.
+5. There are to ways to launch the script that combines the seed data and save the new users to the database:
+   - send GET request to this rout `http://localhost:3000/seed`
+   - execute the following command in the application terminal which will run it as micro app (service) seperated from our Application:
+
+```bash
+$ npm run seed
 ```
 
 ## Running the app
@@ -47,29 +40,50 @@ $ npm run start:dev
 $ npm run start:prod
 ```
 
-## Test
+## API Documentation
 
-```bash
-# unit tests
-$ npm run test
+This App allows you to preform CRUD operations for User and search for users by different criterias.
 
-# e2e tests
-$ npm run test:e2e
+### Documents
 
-# test coverage
-$ npm run test:cov
+| Variable     | Type                      |
+| ------------ | ------------------------- |
+| \_id         | Unique id for the user    |
+| firstname    | String                    |
+| lastName     | String                    |
+| email        | String                    |
+| phoneNumbers | Array of PhoneNumber type |
+
+### Routes
+
+#### User Routes:
+
+1. Route URL: `http://localhost:3000/users`
+   On this route you can preform GET and POST request:
+   - GET all users and filter them using query ( search through firsName & lastName), email and phoneNumber.
+   - and add new (POST) user.
+     POST example:
+
+```
+{
+  "firstName": "fayiz",
+  "lastName": "sa",
+  "email":"maill5",
+  "phoneNumbers":[{
+    "phoneType":"PRIMARY",
+    "value":"1122323"
+  }]
+}
 ```
 
-## Support
+2. Route URL: `http://localhost:3000/users/{id}`
+   On this route you preform GET and PUT request, so you can update and get the user bi its id.
 
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
+#### Seeder Routes:
 
-## Stay in touch
+1. Route URL: `http://localhost:3000/seed`
+   On this route you can prefrorm GET request which will combine the seed data and save the new users to the database.
 
-- Author - [Kamil Myśliwiec](https://kamilmysliwiec.com)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
+### Sincerely
 
-## License
-
-  Nest is [MIT licensed](LICENSE).
+- Developer - Fayiz Hamad

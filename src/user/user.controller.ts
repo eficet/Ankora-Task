@@ -35,7 +35,7 @@ export class UserController {
     }
 
 
-    @Get(':id')
+    @Get('/:id')
     async getUserById(@Req() req: Request, @Param("id") id: string): Promise<MainResponse<User>> {
         console.log(id)
         const user = await this.userService.getUserById(id);
@@ -58,7 +58,7 @@ export class UserController {
     }
 
     @Put('/:id')
-    async updateUser(@Req() req: Request, @Param('id') id: string, @Body() createUserDto: CreateUserDto, ): Promise<MainResponse<User>> {
+    async updateUser(@Req() req: Request, @Param('id') id: string, @Body() createUserDto: CreateUserDto,): Promise<MainResponse<User>> {
         const updatedUser = await this.userService.updateUser(id, createUserDto);
         return new MainResponse(UserConstants.USER_UPDATED,
             HttpStatus.OK,
