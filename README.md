@@ -15,11 +15,11 @@ $ npm install
 
 3. You have two options for the database, in the configuration file `.env` there are two connection strings provided:
    - On the cloud : Using MongoDb Atlas the app will connect to the existing database on the cloud.
-   - Locally : You have to install mongoDb in your local machine and make sure that the mongoDb service is running so the the database will be created automatically.
+   - Locally : You have to install mongoDb in your local machine and make sure that the mongoDb service is running so the database will be created automatically.
      Note: By default the app is connected to the cloud DB, to change it to the local you have to change `MongooseModule.forRoot(process.env.DATABASE_CONNECTION_LOCAL)` in bothe the `app.module.ts` and `seeder.module.ts`.
 4. To test the Application you can use Postman, In the documentaion you will see a detailed explanation of the routes and what they do.
 5. There are to ways to launch the script that combines the seed data and save the new users to the database:
-   - Send GET request to this rout `http://localhost:3000/seed`
+   - Send GET request to this route `http://localhost:3000/seed`
    - Execute the following command in the application terminal which will run it as micro app (service) seperated from our Application:
 
 ```bash
@@ -41,11 +41,11 @@ $ npm run start:prod
 
 ## API Documentation
 
-This App allows you to preform CRUD operations for User and search for users by different criterias.
+This App allows you to preform CRUD operations for the User and search for users by different criterias.
 
 ### Documents
 
-| Variable     | Type                      |
+| Field        | Type                      |
 | ------------ | ------------------------- |
 | \_id         | Unique id for the user    |
 | firstname    | String                    |
@@ -76,13 +76,13 @@ This App allows you to preform CRUD operations for User and search for users by 
 ```
 
 2. Route URL: `http://localhost:3000/users/{id}`
-   On this route you preform GET and PUT request, so you can update and get the user bi its id.
+   On this route you preform GET and PUT request, so you can update and get the user by its id.
 
 #### Seeder Routes:
 
 1. Route URL: `http://localhost:3000/seed`
    On this route you can prefrorm GET request which will combine the seed data and save the new users to the database.
 
-### Sincerely
+#### Sincerely
 
 - Developer - Fayiz Hamad
