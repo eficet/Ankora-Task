@@ -1,4 +1,4 @@
-# Ankora Backend Task Application
+# UserSeeder Backend Task Application
 
 ## Description
 
